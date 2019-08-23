@@ -9,7 +9,7 @@ job-definition: &jobdef
         - run:
             name: Install Salesforce DX
             command: |
-                openssl aes-256-cbc -k 214125442A472D4B6150645367566B58 -in assets/server.key.enc -out assets/server.key -d -md sha256
+                openssl aes-256-cbc -k 214125442A472D4B6150645367566B58 -in assets/server.key.enc -out assets/server.key -d
                 if [ ! -d node_modules/sfdx-cli ]; then
                     export SFDX_AUTOUPDATE_DISABLE=true
                     export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
