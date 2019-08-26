@@ -26,7 +26,7 @@ jobs:
       - run: 
           name: Create Scratch Org
           command: |
-              openssl aes-256-cbc -k 214125442A472D4B6150645367566B58 -in assets/server.key.enc -out assets/server.key -d
+              openssl aes-256-cbc -k $KEY -in assets/server.key.enc -out assets/server.key -d
               node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a DevHub
               node_modules/sfdx-cli/bin/run force:org:create -v DevHub -s -f config/project-scratch-def.json -a scratch
       - run:
@@ -58,3 +58,4 @@ jobs:
       - store_artifacts:
           path: ~/tests
       - store_test_results:
+          path: ~/tests
